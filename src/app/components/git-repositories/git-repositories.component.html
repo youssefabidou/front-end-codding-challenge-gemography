@@ -1,0 +1,18 @@
+<mat-card style="margin: 15px" *ngFor="let gitRepo of gitRepos">
+  <mat-card-header>
+
+    <img mat-card-avatar style="margin-right:15px" src="{{gitRepo.owner.avatar_url}}">
+    <mat-card-title style="margin-bottom: 15px">	{{gitRepo.name}}</mat-card-title>
+    <mat-card-subtitle>	{{gitRepo.description}}</mat-card-subtitle>
+  </mat-card-header>
+  <button mat-button style="margin-left: 70px " disabled>stars: {{gitRepo.stargazers_count}}</button>
+  <button mat-button style="margin: 10px" disabled>issues: {{gitRepo.open_issues_count}}</button>
+  <button mat-button style="margin: 15px" disabled> created at :{{gitRepo.created_at}} by {{gitRepo.owner.login}}</button>
+</mat-card>
+<mat-paginator [length]="10000"
+               [pageSize]="30"
+               [pageIndex]="1"
+               (page)="OnGetAllGitRepo($event)"
+               >
+</mat-paginator>
+
